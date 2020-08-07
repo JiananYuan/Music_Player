@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Music</title>
+    <link rel="stylesheet" href="music_css.css">
+    <link rel="icon" href="Icon.jpg" type="image/x-icon"/>
+</head>
+<body>
+    <div class="wrap">
+        <div class="play_wrap" id="player">
+            <div class="search_bar">
+                <p>I'm Music!</p>
+                <input type="text" autocomplete="off" v-model="query" @keyup.enter="searchMusic" placeholder="输入歌手/歌曲/风格">
+                <img id="search" src="search.png" alt="" width="22px" height="22px" @click="searchMusic">
+            </div>
+            <div class="center_con">
+                <div class="song_warpper">
+                    <ul class="song_list" style="list-style: none;margin: 0px;padding: 0px;">
+                        <li v-for="item in musicList" style="padding: 10px; display: flex;border: 1px solid grey;">
+                            <a href="javascript:;" @click="playMusic(item.id)">
+                                <img src="播放.png" alt="" width="15px" height="15px" style="flex: 0.1;margin-right: 10px;">
+                            </a>
+                            <b style="font-size: 15px;flex: 0.8;">{{ item.name }}</b>
+                            <span v-if="item.mvid!=0" @click="playMV(item.mvid)" style="flex: 0.1;">
+                                <img src="MV.png" alt="" width="20px" height="20px" style="margin-left: 20px;">
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="player_con" :class="{playing:isPlaying}">
+                    <!-- <img src="" alt="" class="player_bar"> -->
+                    <img src="disc.png" alt="" class="disc_autoRotate"><br>
+                    <img :src="musicCover" id="Singer" alt="" class="cover autoRotate" width="180px" height="180px" style="position: relative; border-radius: 90px; bottom: 241px; left: 3px;">
+                    <div class="audio_con">
+                        <audio ref="audio" :src="musicUrl" controls autoplay @play="play" @pause="pause" class="myaudio"></audio>
+                    </div>
+                </div>
+                <div class="comment_wrapper">
+                    <h4 class="title" style="padding: 10px">热门评论</h4>
+                    <div class="comment_list" style="padding: 10px">
+                        <dl v-for="item in hotComments">
+                            <dt style="border-top: 1px grey solid; padding: 9px; font-size: 12px;"><img :src="item.user.avatarUrl" alt="" width="40px" height="40px" style="border-radius: 35px;vertical-align: middle;margin-right: 20px;">{{ item.user.nickname }}</dt>
+                            <!-- <dd class="name">{{ item.user.nickname }}</dd> -->
+                            <dd class="detail">{{item.content}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="video_con" v-show="isShow" style="display: none; ">
+                <video id="mv" :src="mvUrl" controls="controls" width="600px" autoplay></video>
+            </div>
+            <div :class={mask:isShow} @click="hide"></div>
+        </div>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="music_js.js"></script>
+    <script type="text/javascript">
+		
+	</script>
+</body>
+</html>

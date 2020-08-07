@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.search_bar {
+    height: 50px;
+    background: rgb(234,67,53);
+    padding: 10px;
+    text-align: center;
+}
+
+.search_bar p {
+    display: inline;
+    color: white;
+    font-size: 40px;
+    margin-right: 40%;
+    vertical-align: middle;
+}
+
+.search_bar input {
+    border-radius: 20px;
+    border: 1px solid white;
+    width: 20%;
+    padding: 7px;
+    outline: none;
+}
+
+.center_con {
+    display: flex;
+    background-image: url(bg1.jpg);
+    background-size: cover;
+}
+
+.song_warpper {
+    flex: 0.25;
+    border-right: 2px grey solid;
+    overflow: auto;
+    height: 614px
+}
+
+.player_con {
+    flex: 0.5;
+    text-align: center;
+}
+
+.comment_wrapper {
+    flex: 0.25;
+    border-left: 2px grey solid;
+    overflow: auto;
+    height: 614px;
+}
+
+.detail {
+    font-size: 13px;
+    color: grey;
+    padding-bottom: 5px;
+}
+
+.video_con {
+    position: absolute;
+    left: 28%;
+    top: 160px;
+    z-index: 100;
+}
+
+.mask {
+	position: absolute;
+    opacity: 0.8;
+    filter:alpha(opacity=50);
+    bottom:0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 784px;
+    width: 100%;
+    background:black;
+    z-index: 5;
+     /* display: none; */
+}
+
+.disc_autoRotate {
+    margin-top: 30px;
+}
+
+#search {
+    margin-left: 10px;
+}
